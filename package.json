@@ -1,6 +1,6 @@
 {
   "name": "@mojang/i18n-scripts",
-  "version": "1.3.2",
+  "version": "2.0.0",
   "description": "Scripts for internationalization flow",
   "bin": {
     "add-english-translations": "./scripts/addEnglishTranslations.js",
