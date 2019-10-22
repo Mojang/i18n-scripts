@@ -1,0 +1,11 @@
+node_modules
+.package-lock.json
+.idea
+reports
+dist
+coverage
+.DS_Store
+.env
+.npmrc
+out
+*.log
