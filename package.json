@@ -7,7 +7,7 @@
     "generate-json": "./scripts/generateJson.js",
     "merge-translations": "./scripts/mergeTranslations.js"
   },
-  "license": "ISC",
+  "license": "MIT",
   "config": {
     "commitizen": {
       "path": "./node_modules/@satansdeer/git-cz/dist/cz.js"
