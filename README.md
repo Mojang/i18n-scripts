@@ -10,7 +10,9 @@ To work correctly this package requires a `gettext` installation.
 
 ## Install
 
-`$ npm i @mojang/i18n-scripts`
+```console
+$ npm i @mojang/i18n-scripts
+```
 
 ## Scripts
 ___
@@ -21,7 +23,9 @@ Adds english default translation using keys in `pot` file as base translation.
 
 __example__
 
-`$ add-missing-en`
+```console
+$ add-missing-en
+```
 ___
 
 ### merge-translations
@@ -30,7 +34,9 @@ Helper function around gettext `msgmerge`.
 
 __example__
 
-`$ merge-translations`
+```console
+$ merge-translations
+```
 ___
 
 ### generate-json
@@ -45,11 +51,13 @@ Generates json files from `po` files that can be consumed by [Jed](https://githu
 
 __example__
 
-`$ generate-json --lowercase --filenamesMap ./i18n-map.json`
+```console
+$ generate-json --lowercase --filenamesMap ./i18n-map.json
+```
 
 __example i18n-map.json__
 
-```
+```json
 {
   "zh-CN": ["zh-cn", "zh-hans"],
   "zh-TW": ["zh-tw", "zh-hant"]
