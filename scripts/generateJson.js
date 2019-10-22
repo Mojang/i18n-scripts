@@ -14,11 +14,19 @@ const fs = require("fs");
 const po2json = require("po2json");
 const opts = { encoding: "utf8" };
 
+let filenamesMap = {};
 let successful = 0;
 let argv = require("minimist")(process.argv.slice(2));
 const outFolder = argv['o'] || `/static/translations/`;
+const lowercase = argv['lowercase'];
+const filenamesMapPath = argv['filenamesMap'];
 
 fs.mkdirSync(`${process.cwd()}${outFolder}`, { recursive: true });
+
+if (filenamesMapPath) {
+  let rawdata = fs.readFileSync(filenamesMapPath);
+  filenamesMap = JSON.parse(rawdata);
+}
 
 fs.readdir(`${process.cwd()}/locale/`, (err, locales) => {
   console.log(
@@ -70,11 +78,13 @@ function generateJsonForLocale(locale) {
     })
   );
 
-  fs.writeFileSync(
-    `${process.cwd()}${outFolder}${argv['lowercase'] ? locale.toLowerCase() : locale}.json`,
-    jsonData,
-    opts
-  );
-
-  successful++;
+  const filenames = filenamesMapPath && filenamesMap[locale] || [locale];
+  filenames.map(filename => {
+    fs.writeFileSync(
+      `${process.cwd()}${outFolder}${lowercase ? filename.toLowerCase() : filename}.json`,
+      jsonData,
+      opts
+    );
+    successful++;
+  })
 }
