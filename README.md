@@ -65,6 +65,6 @@ __example i18n-map.json__
 ```
 ___
 
-## Licence
+## License
 
-[Licenced under MIT licence](/LICENCE).
+[Licensed under MIT license](/LICENSE).
