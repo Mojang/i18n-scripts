@@ -1,6 +1,6 @@
 {
   "name": "@mojang/i18n-scripts",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Scripts for internationalization flow",
   "bin": {
     "add-english-translations": "./scripts/addEnglishTranslations.js",
@@ -22,5 +22,9 @@
     "gettext-parser": "3.1.0",
     "minimist": "^1.2.0",
     "po2json": "1.0.0-alpha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mojang/i18n-scripts.git"
   }
 }
