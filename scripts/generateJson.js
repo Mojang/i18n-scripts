@@ -77,7 +77,7 @@ function generateJsonForLocale(locale) {
   );
 
   if (fixPercentage) {
-    percentageFix(input);
+    input = percentageFix(input);
   }
 
   const jsonData = trimLinebreaksFromKeys(
