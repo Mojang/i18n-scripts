@@ -71,22 +71,22 @@ function percentageFix(text) {
 }
 
 function generateJsonForLocale(locale) {
-  let input = fs.readFileSync(
+  const input = fs.readFileSync(
     `${process.cwd()}/locale/${locale}/${locale}.po`,
     opts
   );
 
-  if (fixPercentage) {
-    input = percentageFix(input);
-  }
-
-  const jsonData = trimLinebreaksFromKeys(
+  let jsonData = trimLinebreaksFromKeys(
     po2json.parse(input, {
       format: "jed",
       pretty: true,
       stringify: true
     })
   );
+
+  if (fixPercentage) {
+    jsonData = percentageFix(jsonData);
+  }
 
   const filenames = filenamesMapPath && filenamesMap[locale] || [locale];
   filenames.map(filename => {
