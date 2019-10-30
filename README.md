@@ -43,17 +43,17 @@ ___
 
 Generates json files from `po` files that can be consumed by [Jed](https://github.com/messageformat/Jed).
 
-| flag                       | action                                          |
-|----------------------------|-------------------------------------------------|
-| --o (optional)             | When set, sets output file                      |
-| --lowercase (optional)     | When set, produces lowercase filename           |
-| --fix-percentage (optional)| When set, appends extra percentage sign         |
-| --filenamesMap (optional)  | When set, reads file name maps from a json file |
+| flag                          | action                                          |
+|-------------------------------|-------------------------------------------------|
+| --o (optional)                | When set, sets output file                      |
+| --lowercase (optional)        | When set, produces lowercase filename           |
+| --escape-percentage (optional)| When set, appends extra percentage sign         |
+| --filenamesMap (optional)     | When set, reads file name maps from a json file |
 
 __example__
 
 ```console
-$ generate-json --lowercase --fix-percentage --filenamesMap ./i18n-map.json
+$ generate-json --lowercase --escape-percentage --filenamesMap ./i18n-map.json
 ```
 
 __example i18n-map.json__
