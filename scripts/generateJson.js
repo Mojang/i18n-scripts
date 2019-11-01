@@ -19,6 +19,7 @@ let successful = 0;
 let argv = require("minimist")(process.argv.slice(2));
 const outFolder = argv['o'] || `/static/translations/`;
 const lowercase = argv['lowercase'];
+const escapePercentage = argv['escape-percentage'];
 const filenamesMapPath = argv['filenamesMap'];
 
 fs.mkdirSync(`${process.cwd()}${outFolder}`, { recursive: true });
@@ -65,18 +66,27 @@ function replaceLineBreaksInKey(prev, key, parsedJson) {
   return { ...prev };
 }
 
+function escapePercentage(text) {
+  return text.replace(/(?!%[0-9]{1,2}\$s)%/g, '%%');
+}
+
 function generateJsonForLocale(locale) {
   const input = fs.readFileSync(
     `${process.cwd()}/locale/${locale}/${locale}.po`,
     opts
   );
-  const jsonData = trimLinebreaksFromKeys(
+
+  let jsonData = trimLinebreaksFromKeys(
     po2json.parse(input, {
       format: "jed",
       pretty: true,
       stringify: true
     })
   );
+
+  if (escapePercentage) {
+    jsonData = escapePercentage(jsonData);
+  }
 
   const filenames = filenamesMapPath && filenamesMap[locale] || [locale];
   filenames.map(filename => {
