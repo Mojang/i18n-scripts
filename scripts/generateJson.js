@@ -19,7 +19,7 @@ let successful = 0;
 let argv = require("minimist")(process.argv.slice(2));
 const outFolder = argv['o'] || `/static/translations/`;
 const lowercase = argv['lowercase'];
-const escapePercentage = argv['escape-percentage'];
+const shouldEscapePercentage = argv['escape-percentage'];
 const filenamesMapPath = argv['filenamesMap'];
 
 fs.mkdirSync(`${process.cwd()}${outFolder}`, { recursive: true });
@@ -84,7 +84,7 @@ function generateJsonForLocale(locale) {
     })
   );
 
-  if (escapePercentage) {
+  if (shouldEscapePercentage) {
     jsonData = escapePercentage(jsonData);
   }
 
